@@ -10,7 +10,7 @@
         {
             "name": "Vedmant",
             "email": "vedmant@gmail.com"
-        },
+        }
     ],
     "require": {
         "php": ">=5.5.0",
