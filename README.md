@@ -10,37 +10,31 @@ A simple RSS feed reader for **Laravel 5**
 
 ## Quick Start
 
-In the `require` key of `composer.json` file add the following:
+To install this package run the Composer command
 
 ```
-"awjudd/feed-reader": "1.2.*"
+$ composer require vedmant/laravel-feed-reader
 ```
 
-Run the Composer update command
-
-```
-$ composer update
-```
-
-In your `config/app.php` add `'Awjudd\FeedReader\FeedReaderServiceProvider'` to the end of the `$providers` array
+In your `config/app.php` add `Awjudd\FeedReader\FeedReaderServiceProvider::class` to the end of the `$providers` array
 
 ```php
-'providers' => array(
+'providers' => [
 
-    'Illuminate\Foundation\Providers\ArtisanServiceProvider',
-    'Illuminate\Auth\AuthServiceProvider',
+    Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
+    Illuminate\Auth\AuthServiceProvider::class,
     ...
-    'Awjudd\FeedReader\FeedReaderServiceProvider',
+    Awjudd\FeedReader\FeedReaderServiceProvider::class,
 
-),
+[,
 
-'aliases' => array(
+'aliases' => [
 
-    'App'             => 'Illuminate\Support\Facades\App',
-    'Artisan'         => 'Illuminate\Support\Facades\Artisan',
+    'App'        => Illuminate\Support\Facades\App::class,
+    'Artisan'    => Illuminate\Support\Facades\Artisan::class,
     ...
-    'FeedReader'      => 'Awjudd\FeedReader\Facades\FeedReader',
-),
+    'FeedReader' => Awjudd\FeedReader\Facades\FeedReader::class,
+],
 ```
 
 ## Setup
@@ -50,7 +44,7 @@ In your `config/app.php` add `'Awjudd\FeedReader\FeedReaderServiceProvider'` to 
 After installing through composer, you should publish the config file.  To do this, run the following command:
 
 ```
-$ php artisan config:publish awjudd/feed-reader
+$ php artisan vendor:publish --provider="Awjudd\FeedReader\FeedReaderServiceProvider"
 ```
 
 ### Configuration Values
@@ -75,4 +69,4 @@ Feed Reader is free software distributed under the terms of the MIT license
 
 ## Additional Information
 
-Any issues, please [report here](https://github.com/awjudd/l4-feed-reader/issues)
+Any issues, please [report here](https://github.com/vedmant/laravel-feed-reader/issues)
