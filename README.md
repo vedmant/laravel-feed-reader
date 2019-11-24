@@ -21,6 +21,11 @@ To install this package run the Composer command
 $ composer require vedmant/laravel-feed-reader
 ```
 
+This package supports [Laravel Auto-Discovery](https://laravel.com/docs/master/packages#package-discovery) and will be discovered automatically.
+
+
+For Laravel versions prior to 5.5 and below follow next guide:
+
 In your `config/app.php` add `Awjudd\FeedReader\FeedReaderServiceProvider::class` to the end of the `$providers` array
 
 ```php
