@@ -1,4 +1,4 @@
-# Laravel 5 - Feed Reader
+# Laravel 5|6 - Feed Reader
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](license.md)
@@ -6,7 +6,7 @@
 [![Build Status][ico-travis]][link-travis]
 
 
-A simple RSS feed reader for **Laravel 5**
+A simple RSS feed reader for **Laravel 5|6**
 
 ## Features
 
