@@ -1,5 +1,10 @@
-Laravel 5 - Feed Reader
-===============
+# Laravel 5 - Feed Reader
+
+[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Software License][ico-license]](license.md)
+[![Total Downloads][ico-downloads]][link-downloads]
+[![Build Status][ico-travis]][link-travis]
+
 
 A simple RSS feed reader for **Laravel 5**
 
@@ -70,3 +75,14 @@ Feed Reader is free software distributed under the terms of the MIT license
 ## Additional Information
 
 Any issues, please [report here](https://github.com/vedmant/laravel-feed-reader/issues)
+
+[ico-version]: https://img.shields.io/packagist/v/vedmant/laravel-feed-reader.svg?style=flat-square
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/vedmant/laravel-feed-reader.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/vedmant/laravel-feed-reader/master.svg?style=flat-square
+
+[link-packagist]: https://packagist.org/packages/vedmant/laravel-feed-reader
+[link-downloads]: https://packagist.org/packages/vedmant/laravel-feed-reader
+[link-travis]: https://travis-ci.org/vedmant/laravel-feed-reader
+[link-author]: https://github.com/vedmant
+[link-contributors]: ../../contributors
