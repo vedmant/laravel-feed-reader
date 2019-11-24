@@ -37,7 +37,7 @@
         "Vedmant\\FeedReader\\FeedReaderServiceProvider"
       ],
       "aliases": {
-        "Shortcodes": "Vedmant\\FeedReader\\Facades\\FeedReader"
+        "FeedReader": "Vedmant\\FeedReader\\Facades\\FeedReader"
       }
     }
   }
