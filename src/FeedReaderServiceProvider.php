@@ -1,16 +1,11 @@
-<?php namespace Awjudd\FeedReader;
-/**
- * @Author: Andrew Judd
- * @Date:   2015-03-22 22:16:19
- * @Last Modified by:   Andrew Judd
- * @Last Modified time: 2015-03-22 22:22:37
- */
+<?php
+
+namespace Vedmant\FeedReader;
 
 use Illuminate\Support\ServiceProvider;
 
 class FeedReaderServiceProvider extends ServiceProvider
 {
-
 	/**
 	 * Indicates if loading of the provider is deferred.
 	 *
@@ -38,12 +33,12 @@ class FeedReaderServiceProvider extends ServiceProvider
 	public function register()
 	{
         // Bind to the "Asset" section
-        $this->app->bind('feedreader', function() {
+        $this->app->bind('feed-reader', function() {
             return new FeedReader();
         });
 
         $this->mergeConfigFrom(
-            __DIR__.'/../../config/feed-reader.php', 'feed-reader'
+            __DIR__.'/../config/feed-reader.php', 'feed-reader'
         );
 	}
 
@@ -56,5 +51,4 @@ class FeedReaderServiceProvider extends ServiceProvider
 	{
 		return array('feed-reader');
 	}
-
 }
