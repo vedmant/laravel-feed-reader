@@ -54,7 +54,7 @@ In your `config/app.php` add following:
 After installing through composer, you should publish the config file.  To do this, run the following command:
 
 ```
-$ php artisan vendor:publish --provider="Awjudd\FeedReader\FeedReaderServiceProvider"
+$ php artisan vendor:publish --provider="Vedmant\FeedReader\FeedReaderServiceProvider"
 ```
 
 ### Configuration Values
