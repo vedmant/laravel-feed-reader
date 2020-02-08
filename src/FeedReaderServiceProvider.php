@@ -21,7 +21,7 @@ class FeedReaderServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../../config/feed-reader.php' => config_path('feed-reader.php')
+            __DIR__.'/../config/feed-reader.php' => config_path('feed-reader.php')
         ], 'config');
     }
 
