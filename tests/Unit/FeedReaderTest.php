@@ -20,7 +20,7 @@ class FeedReaderTest extends TestCase
 
     public function testReadRss()
     {
-        self::$process = new Process("php -S localhost:8123 -t ./tests/resources");
+        self::$process = new Process(['php', '-S', 'localhost:8123', '-t', './tests/resources']);
         self::$process->start();
         usleep(500000);
 
