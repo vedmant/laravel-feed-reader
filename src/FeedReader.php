@@ -17,8 +17,8 @@ class FeedReader
     public function read($url, $configuration = 'default')
     {
         // Setup the object
-        $sp = new SimplePie();
-
+         $sp = app(SimplePie::class);
+        
         // Configure it
         if(($cache = $this->setupCacheDirectory($configuration)) !== false)
         {
