@@ -3,10 +3,26 @@
 namespace Vedmant\FeedReader;
 
 use Config;
+use Illuminate\Contracts\Container\Container;
 use SimplePie;
 
 class FeedReader
 {
+    /**
+     * @var Container
+     */
+    private $app;
+
+    /**
+     * FeedReader constructor.
+     *
+     * @param Container $app
+     */
+    public function __construct(Container $app)
+    {
+        $this->app = $app;
+    }
+
     /**
      * Used to parse an RSS feed.
      *
@@ -17,7 +33,7 @@ class FeedReader
     public function read($url, $configuration = 'default')
     {
         // Setup the object
-        $sp = new SimplePie();
+        $sp = $this->app->make(SimplePie::class);
 
         // Configure it
         if(($cache = $this->setupCacheDirectory($configuration)) !== false)

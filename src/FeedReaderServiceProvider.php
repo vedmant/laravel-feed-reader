@@ -33,8 +33,8 @@ class FeedReaderServiceProvider extends ServiceProvider
 	public function register()
 	{
         // Bind to the "Asset" section
-        $this->app->bind('feed-reader', function() {
-            return new FeedReader();
+        $this->app->bind('feed-reader', function($app) {
+            return new FeedReader($app);
         });
 
         $this->mergeConfigFrom(
