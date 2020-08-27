@@ -55,6 +55,13 @@ class FeedReader
         // Should we be ordering the feed by date?
         $sp->enable_order_by_date($this->readConfig($configuration, 'order-by-date', false));
 
+        if (! $this->readConfig($configuration, 'ssl-verify', true)) {
+            $sp->set_curl_options([
+                CURLOPT_SSL_VERIFYHOST => false,
+                CURLOPT_SSL_VERIFYPEER => false,
+            ]);
+        }
+
         // Set the feed URL
         $sp->set_feed_url($url);
 
