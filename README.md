@@ -73,11 +73,10 @@ echo $f->get_items()[0]->get_title();
 echo $f->get_items()[0]->get_content();
 ```
 
-See [SimplePie](http://simplepie.org/api/index.html) API for all available methods.
-
 This function accepts 2 parameters however, the second parameter is optional.  The second parameter is the configuration profile that should be used when reading the RSS feed.
 
 This will return to you the SimplePie object with the RSS feed in it.
+See [SimplePie](http://simplepie.org/api/index.html) API for all available methods.
 
 ## License
 
