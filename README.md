@@ -66,8 +66,14 @@ Once published, the configuration file contains an array of profiles.  These wil
 Once you have all of the configuration settings set up, in order to read a RSS feed all you need to do is call the `read` function:
 
 ```php
-FeedReader::read('http://www.example.com/rss');
+$f = FeedReader::read('https://news.google.com/news/rss');
+
+echo $f->get_title();
+echo $f->get_items()[0]->get_title();
+echo $f->get_items()[0]->get_content();
 ```
+
+See [SimplePie](http://simplepie.org/api/index.html) API for all available methods.
 
 This function accepts 2 parameters however, the second parameter is optional.  The second parameter is the configuration profile that should be used when reading the RSS feed.
 
