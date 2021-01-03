@@ -55,11 +55,24 @@ class FeedReader
         // Should we be ordering the feed by date?
         $sp->enable_order_by_date($this->readConfig($configuration, 'order-by-date', false));
 
+        $curlOptions = [];
+
+        // Should we verify SSL
         if (! $this->readConfig($configuration, 'ssl-verify', true)) {
-            $sp->set_curl_options([
+            $curlOptions = [
                 CURLOPT_SSL_VERIFYHOST => false,
                 CURLOPT_SSL_VERIFYPEER => false,
-            ]);
+            ];
+        }
+
+        // Should we override the default cURL user-agent?
+        if (! empty($this->readConfig($configuration, 'curl-useragent', false))) {
+            $curlOptions[CURLOPT_USERAGENT] = $this->readConfig($configuration, 'curl-useragent', false);
+        }
+
+        // Set cURL options
+        if (! empty($curlOptions)) {
+            $sp->set_curl_options($curlOptions);
         }
 
         // Set the feed URL
