@@ -66,6 +66,13 @@ return [
              * @var boolean
              */
             'ssl-verify' => true,
+
+            /**
+             * The cURL user-agent to use for the request (if left blank, defaults to 'curl/[version]')
+             *
+             * @var string
+             */
+            'curl-useragent' => ''
         ],
     ],
 ];
