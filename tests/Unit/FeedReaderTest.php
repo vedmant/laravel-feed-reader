@@ -43,10 +43,10 @@ class FeedReaderTest extends TestCase
         usleep(500000);
 
         /** @var SimplePie $rss */
-        $rss = FeedReaderFacade::read('http://localhost:8123/rss.xml', null, [
+        $rss = FeedReaderFacade::read('http://localhost:8123/rss.xml', null, ['curl_options' => [
             CURLOPT_HTTPAUTH => CURLAUTH_DIGEST,
             CURLOPT_USERPWD => 'username:password'
-        ]);
+        ]]);
 
         $this->assertEquals([
             107 => 2,
