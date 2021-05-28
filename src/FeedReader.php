@@ -28,9 +28,10 @@ class FeedReader
      *
      * @param        $url
      * @param string $configuration
+     * @param array  $options
      * @return SimplePie
      */
-    public function read($url, $configuration = 'default')
+    public function read($url, $configuration = 'default', array $options = [])
     {
         // Setup the object
         $sp = $this->app->make(SimplePie::class);
@@ -60,6 +61,11 @@ class FeedReader
                 CURLOPT_SSL_VERIFYHOST => false,
                 CURLOPT_SSL_VERIFYPEER => false,
             ]);
+        }
+
+        // If the user passes manual curl options, let's add them
+        if (isset($options['curl_options'])) {
+            $sp->set_curl_options($options['curl_options']);
         }
 
         // Set the feed URL

@@ -30,6 +30,28 @@ class FeedReaderTest extends TestCase
         $this->assertEquals('FeedForAll Sample Feed', $rss->get_title());
         $this->assertObjectHasAttribute('term', $rss->get_category());
         $this->assertEquals(9, $rss->get_item_quantity());
+        // No curl options passed
+        $this->assertEquals([], $rss->curl_options);
+
+        self::$process->stop();
+    }
+
+    public function testReadRssWithOptions()
+    {
+        self::$process = new Process(['php', '-S', 'localhost:8123', '-t', './tests/resources']);
+        self::$process->start();
+        usleep(500000);
+
+        /** @var SimplePie $rss */
+        $rss = FeedReaderFacade::read('http://localhost:8123/rss.xml', null, ['curl_options' => [
+            CURLOPT_HTTPAUTH => CURLAUTH_DIGEST,
+            CURLOPT_USERPWD => 'username:password'
+        ]]);
+
+        $this->assertEquals([
+            107 => 2,
+            10005 => "username:password"
+        ], $rss->curl_options);
 
         self::$process->stop();
     }

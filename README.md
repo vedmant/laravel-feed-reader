@@ -78,6 +78,21 @@ This function accepts 2 parameters however, the second parameter is optional.  T
 This will return to you the SimplePie object with the RSS feed in it.
 See [SimplePie](http://simplepie.org/api/index.html) API for all available methods.
 
+#### Passing curl options
+You can also pass specific curl options per `read()` calls. You can pass these options, as an `array` as the 3rd parameter. The list of options can be found on the [PHP Manual](https://www.php.net/manual/en/function.curl-setopt.php).
+
+Example:
+```php
+// You need to log in to the rss endpoint with a Digest auth
+$options = [
+    'curl_options' => [
+    CURLOPT_HTTPAUTH => CURLAUTH_DIGEST,
+    CURLOPT_USERPWD => 'username:password'
+]];
+
+$f = FeedReader::read('https://news.google.com/news/rss', 'default', $options);
+```
+
 ## License
 
 Feed Reader is free software distributed under the terms of the MIT license
