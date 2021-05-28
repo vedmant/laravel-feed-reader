@@ -64,7 +64,7 @@ class FeedReader
         }
 
         // If the user passes manual curl options, let's add them
-        if (count($options['curl_options']) > 0) {
+        if (isset($options['curl_options'])) {
             $sp->set_curl_options($options['curl_options']);
         }
 
