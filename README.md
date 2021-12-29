@@ -20,7 +20,9 @@ To install this package run the Composer command
 ```
 $ composer require vedmant/laravel-feed-reader
 ```
-
+## Video Tutorial 
+ [<img src="https://img.youtube.com/vi/Qvnf0kQyJTU/0.jpg" width="350" >](https://youtu.be/Qvnf0kQyJTU)
+ 
 For Laravel 5.5 and above this package supports [Laravel Auto-Discovery](https://laravel.com/docs/master/packages#package-discovery) and will be discovered automatically.
 
 
