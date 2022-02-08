@@ -13,6 +13,6 @@ class FeedReader extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'feed-reader';
+        return \Vedmant\FeedReader\FeedReader::class;
     }
 }
