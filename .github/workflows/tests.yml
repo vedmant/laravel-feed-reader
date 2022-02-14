@@ -31,7 +31,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Setup PHP
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
       - name: Install dependencies
