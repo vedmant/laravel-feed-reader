@@ -9,7 +9,6 @@ jobs:
       matrix:
         php: [ 7.4, 8.0, 8.1 ]
         laravel: [ 6.*, 8.*, 9.* ]
-        dependency-version: [ prefer-lowest, prefer-stable ]
         exclude:
           - php: 8.0
             laravel: 6.*
@@ -37,7 +36,6 @@ jobs:
       - name: Install dependencies
         run: |
           composer require "illuminate/support:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "phpunit/phpunit:${{ matrix.phpunit }}" --no-interaction --no-update
-          composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
       - name: Cache dependencies
         uses: actions/cache@v1
         with:
