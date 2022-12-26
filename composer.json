@@ -1,6 +1,6 @@
 {
   "name": "vedmant/laravel-feed-reader",
-  "description": "A simple RSS feed reader for Laravel 5|6",
+  "description": "A simple RSS feed reader for Laravel",
   "license": "MIT",
   "authors": [
     {
