@@ -88,9 +88,10 @@ Example:
 // You need to log in to the rss endpoint with a Digest auth
 $options = [
     'curl_options' => [
-    CURLOPT_HTTPAUTH => CURLAUTH_DIGEST,
-    CURLOPT_USERPWD => 'username:password'
-]];
+        CURLOPT_HTTPAUTH => CURLAUTH_DIGEST,
+        CURLOPT_USERPWD => 'username:password',
+    ],
+];
 
 $f = FeedReader::read('https://news.google.com/news/rss', 'default', $options);
 ```
