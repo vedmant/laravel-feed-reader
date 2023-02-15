@@ -61,7 +61,7 @@ $ php artisan vendor:publish --provider="Vedmant\FeedReader\FeedReaderServicePro
 
 ### Configuration Values
 
-Once published, the configuration file contains an array of profiles.  These will define how the RSS feed reader will react.  By default the "default" profile will used.  For more information on: [here]http://simplepie.org/wiki/reference/simplepie/start.
+Once published, the configuration file contains an array of profiles.  These will define how the RSS feed reader will react.  By default the "default" profile will used.  For more information on: [here](http://simplepie.org/wiki/reference/simplepie/start).
 
 ### How to use
 
