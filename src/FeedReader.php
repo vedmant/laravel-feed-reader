@@ -2,9 +2,12 @@
 
 namespace Vedmant\FeedReader;
 
-use Config;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Container\Container;
-use SimplePie;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Config;
+use Psr\SimpleCache\CacheInterface;
+use SimplePie\SimplePie;
 
 class FeedReader
 {
@@ -28,20 +31,23 @@ class FeedReader
      *
      * @param        $url
      * @param string $configuration
-     * @param array  $options
+     * @param array $options
      * @return SimplePie
+     *
+     * @throws BindingResolutionException
      */
     public function read($url, $configuration = 'default', array $options = [])
     {
-        // Setup the object
+        // Set up the object
         $sp = $this->app->make(SimplePie::class);
 
+        $cache = Cache::store($this->readConfig($configuration, 'cache.driver', 'file'));
         // Configure it
-        if(($cache = $this->setupCacheDirectory($configuration)) !== false)
+        if ($cache instanceof CacheInterface)
         {
-            // Enable caching, and set the folder
-            $sp->enable_cache(true);
-            $sp->set_cache_location($cache);
+            // Enable caching
+            $sp->enable_cache();
+            $sp->set_cache($cache);
             $sp->set_cache_duration($this->readConfig($configuration, 'cache.duration', 3600));
         }
         else
@@ -50,7 +56,7 @@ class FeedReader
             $sp->enable_cache(false);
         }
 
-        // Whether or not to force the feed reading
+        // Whether to force the feed reading
         $sp->force_feed($this->readConfig($configuration, 'force-feed', false));
 
         // Should we be ordering the feed by date?
@@ -79,48 +85,7 @@ class FeedReader
     }
 
     /**
-     * Used in order to setup the cache directory for future use.
-     *
-     * @param string $configuration The configuration to use
-     * @return string The folder that is being cached to
-     */
-    private function setupCacheDirectory($configuration)
-    {
-        // Check if caching is enabled
-        $cache_enabled = $this->readConfig($configuration, 'cache.enabled', false);
-
-        // Is caching enabled?
-        if(!$cache_enabled)
-        {
-            // It is disabled, so skip it
-            return false;
-        }
-
-        // Grab the cache location
-        $cache_location = storage_path($this->readConfig($configuration, 'cache.location', 'rss-feeds'));
-
-        // Is the last character a slash?
-        if(substr($cache_location, -1) != DIRECTORY_SEPARATOR)
-        {
-            // Add in the slash at the end
-            $cache_location .= DIRECTORY_SEPARATOR;
-        }
-
-        // Check if the folder is available
-        if(!file_exists($cache_location))
-        {
-            // It didn't, so make it
-            mkdir($cache_location, 0777);
-
-            // Also add in a .gitignore file
-            file_put_contents($cache_location . '.gitignore', '!.gitignore' . PHP_EOL . '*');
-        }
-
-        return $cache_location;
-    }
-
-    /**
-     * Used internally in order to retrieve a sepcific value from the configuration
+     * Used internally in order to retrieve a specific value from the configuration
      * file.
      *
      * @param string $configuration The name of the configuration to use
