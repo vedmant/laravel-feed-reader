@@ -3,7 +3,7 @@
 return [
 
     /**
-     * An array of any of the configuration profiles that the developer may want.
+     * An array of the configuration profiles that the developer may want.
      *
      * @var array
      */
@@ -17,7 +17,7 @@ return [
         'default' => [
 
             /**
-             * All of the cache settings
+             * All the cache settings
              *
              * @var array
              */
@@ -31,22 +31,22 @@ return [
                 'duration' => 3600,
 
                 /**
-                 * Whether or not caching is enabled.
+                 * Whether caching is enabled.
                  *
                  * @var boolean
                  */
                 'enabled' => true,
 
                 /**
-                 * The folder in the "storage"
+                 * The laravel cache driver used for caching
                  *
                  * @var string
                  */
-                'location' => 'rss-feeds',
+                'driver' => 'default',
             ],
 
             /**
-             * Whether or not to force the data feed to be treated as an
+             * Whether to force the data feed to be treated as an
              * RSS feed.
              *
              * @var boolean
@@ -54,7 +54,7 @@ return [
             'force-feed' => false,
 
             /**
-             * Whether or not the RSS feed should have it's output ordered by date.
+             * Whether the RSS feed should have its output ordered by date.
              *
              * @var boolean
              */
