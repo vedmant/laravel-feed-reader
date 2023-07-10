@@ -42,7 +42,7 @@ return [
                  *
                  * @var string
                  */
-                'driver' => 'default',
+                'driver' => env('CACHE_DRIVER', 'file'),
             ],
 
             /**
