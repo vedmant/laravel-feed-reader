@@ -30,7 +30,7 @@ jobs:
             phpunit: 9.*
           - laravel: 12.*
             testbench: 10.x
-            phpunit: 10.*
+            phpunit: 11.*
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
