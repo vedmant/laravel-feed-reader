@@ -28,7 +28,11 @@ class FeedReaderTest extends TestCase
         $rss = FeedReaderFacade::read('http://localhost:8123/rss.xml');
 
         $this->assertEquals('FeedForAll Sample Feed', $rss->get_title());
-        $this->assertObjectHasAttribute('term', $rss->get_category());
+
+        $category = $rss->get_category();
+        $this->assertNotNull($category, 'Category should not be null');
+        $this->assertTrue(property_exists($category, 'term'), 'Category object should have "term" property');
+
         $this->assertEquals(9, $rss->get_item_quantity());
         // No curl options passed
         $this->assertEquals([], $rss->curl_options);
