@@ -7,15 +7,17 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [ 7.4, 8.0, 8.1 ]
-        laravel: [ 6.*, 8.*, 9.* ]
+        php: [ 7.4, 8.1, 8.3 ]
+        laravel: [ 6.*, 8.*, 9.*, 12.* ]
         exclude:
-          - php: 8.0
-            laravel: 6.*
           - php: 8.1
+            laravel: 6.*
+          - php: 8.3
             laravel: 6.*
           - php: 7.4
             laravel: 9.*
+          - php: 7.4
+            laravel: 12.*
         include:
           - aravel: 6.*
             testbench: 4.*
@@ -26,6 +28,9 @@ jobs:
           - laravel: 9.*
             testbench: 7.*
             phpunit: 9.*
+          - laravel: 12.*
+            testbench: 10.x
+            phpunit: 10.*
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
